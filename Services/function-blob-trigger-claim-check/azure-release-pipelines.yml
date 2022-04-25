@@ -1,0 +1,22 @@
+trigger: none
+
+resources:
+  pipelines:
+  - pipeline: build
+    source: 'messaging-patterns - Async API - BUILD'
+  
+variables:
+  vmImageName: 'ubuntu-latest'
+  azureSubscription: 'Demo Account'
+
+stages:
+- template: azure-release-pipelines-stage-template.yml
+  parameters:
+    stageName: 'CI'
+    environment: 'API-CI'
+    azureSubscription: ${{ variables.azureSubscription }}
+    functionAppName: 'rutzsco-messaging-patterns-async-api'
+    resourceGroupName: 'rutzsco-messaging-pattern'
+    storageAccountName: 'rutzscoazfasynapi'
+    region: 'East US'
+    packageName: 'Demo.Aysnc.API.zip'
