@@ -3,7 +3,7 @@ trigger: none
 resources:
   pipelines:
   - pipeline: build
-    source: 'demo-functions-async-api - BUILD'
+    source: 'messaging-patterns - Async API - BUILD'
   
 variables:
   vmImageName: 'ubuntu-latest'
@@ -15,8 +15,8 @@ stages:
     stageName: 'CI'
     environment: 'API-CI'
     azureSubscription: ${{ variables.azureSubscription }}
-    functionAppName: 'demo-function-async-api-ci'
-    resourceGroupName: 'demo-function-async-api-ci'
-    storageAccountName: 'azfuncasynapici'
+    functionAppName: 'rutzsco-messaging-patterns-async-api'
+    resourceGroupName: 'rutzsco-messaging-pattern'
+    storageAccountName: 'rutzscoazfasynapi'
     region: 'East US'
     packageName: 'Api.zip'
