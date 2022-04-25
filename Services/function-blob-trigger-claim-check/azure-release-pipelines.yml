@@ -3,7 +3,7 @@ trigger: none
 resources:
   pipelines:
   - pipeline: build
-    source: 'messaging-patterns - Async API - BUILD'
+    source: 'messaging-patterns - Blob Processor - BUILD'
   
 variables:
   vmImageName: 'ubuntu-latest'
@@ -15,8 +15,8 @@ stages:
     stageName: 'CI'
     environment: 'API-CI'
     azureSubscription: ${{ variables.azureSubscription }}
-    functionAppName: 'rutzsco-messaging-patterns-async-api'
+    functionAppName: 'rutzsco-messaging-patterns-blob-processor'
     resourceGroupName: 'rutzsco-messaging-pattern'
-    storageAccountName: 'rutzscoazfasynapi'
+    storageAccountName: 'rutzscoazfblobpro'
     region: 'East US'
-    packageName: 'Demo.Aysnc.API.zip'
+    packageName: 'Demo.BlobProcessor.zip'
