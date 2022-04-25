@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+Services/dapr-pub-sub/Demo.Dapr.PubSub/Demo.Dapr.PubSub.Publisher/appsettings.Development.json
