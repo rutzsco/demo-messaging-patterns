@@ -19,4 +19,4 @@ stages:
     resourceGroupName: 'rutzsco-messaging-pattern'
     storageAccountName: 'rutzscoazfasynapi'
     region: 'East US'
-    packageName: 'Api.zip'
+    packageName: 'Demo.Aysnc.API.zip'
