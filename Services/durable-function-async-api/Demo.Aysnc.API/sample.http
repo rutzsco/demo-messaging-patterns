@@ -1,0 +1,6 @@
+@baseUrl = https://rutzsco-messaging-patterns-async-api.azurewebsites.net/api
+### Sent Aynsc Request
+GET {{baseUrl}}/StartWorkEndpoint?duration=30
+
+
+

@@ -14,7 +14,7 @@ namespace Demo.Aysnc.API
     public static class StartWorkEndpoint
     {
         [FunctionName("StartWorkEndpoint")]
-        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
                                                     [DurableClient] IDurableOrchestrationClient starter,
                                                     ILogger log)
         {
