@@ -37,7 +37,7 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
-        buildContext: '$(Build.SourcesDirectory)/Services/dapr-pub-sub/Demo.Dapr.PubSub/Demo.Dapr.PubSub.Publisher'
+        buildContext: '$(Build.SourcesDirectory)/Services/dapr-pub-sub/Demo.Dapr.PubSub/Demo.Dapr.PubSub.Publisher/'
         tags: |
           $(tag)
     
