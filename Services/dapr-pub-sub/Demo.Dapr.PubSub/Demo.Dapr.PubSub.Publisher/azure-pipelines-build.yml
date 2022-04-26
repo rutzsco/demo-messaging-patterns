@@ -43,6 +43,6 @@ stages:
     
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Build.SourcesDirectory)/DemoAPI/Helm/'
+        targetPath: '$(Build.SourcesDirectory)/Services/dapr-pub-sub/Demo.Dapr.PubSub/Deploy'
         artifact: 'Deploy'
         publishLocation: 'pipeline'
