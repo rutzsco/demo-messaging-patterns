@@ -1,0 +1,43 @@
+trigger: none
+
+resources:
+  pipelines:
+  - pipeline: build
+    source: 'demo-aks-app - BUILD'
+  
+variables:
+  vmImageName: 'ubuntu-latest'
+  azureSubscription: 'Demo Account'
+
+stages:
+
+ - stage: CI
+   displayName: CI Stage 
+   variables:
+     kubernetesCluster: 'rutzsco-aks1'
+     resourceGroupName: 'rutzsco-aks'  
+   jobs:
+   - deployment: Deploy
+     displayName: Deploy
+     environment: 'CI'
+     pool:
+        vmImage: $(vmImageName)   
+      
+     strategy:
+        runOnce:
+          deploy:
+  
+            steps:
+              - task: KubectlInstaller@0
+                inputs:
+                  kubectlVersion: 'latest'
+              - task: Kubernetes@1
+                inputs:
+                  connectionType: 'Kubernetes Service Connection'
+                  kubernetesServiceEndpoint: 'RUTZSCO-AKS1'
+                  namespace: 'dapr-pubsub'
+                  command: 'apply'
+                  arguments: '-f $(Pipeline.Workspace)/Deploy/publisher-aks-deployment.yaml'
+
+
+            
