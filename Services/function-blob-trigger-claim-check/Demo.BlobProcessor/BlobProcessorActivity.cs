@@ -16,8 +16,7 @@ namespace Demo.BlobProcessor
         [FunctionName("BlobProcessorActivity")]
         public static async Task Run([EventGridTrigger] EventGridEvent eventGridEvent, [Blob("{data.url}", FileAccess.Read)] Stream blobStream, ILogger log)
         {
-            var createdEvent = ((JObject)eventGridEvent.Data).ToObject<StorageBlobCreatedEventData>();
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{createdEvent.Url} \n Size: {blobStream.Length} Bytes");
+            log.LogInformation($"C# Blob trigger function Processed blob\n Data:{eventGridEvent.Data} \n Size: {blobStream.Length} Bytes");
         }
     }
 }
