@@ -8,6 +8,7 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  rootDirectory: 'Services/durable-function-async-api'
 
 variables:
   buildConfiguration: 'Release'
@@ -16,6 +17,6 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: 'Infrastructure'
+    targetPath: '$(rootDirectory)/Infrastructure'
     artifact: 'Infrastructure'
     publishLocation: 'pipeline'
