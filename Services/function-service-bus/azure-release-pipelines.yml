@@ -1,0 +1,23 @@
+trigger: none
+
+resources:
+  pipelines:
+  - pipeline: build
+    source: 'messaging-patterns - Service Bus Processor - BUILD'
+  
+variables:
+  vmImageName: 'ubuntu-latest'
+  azureSubscription: 'Demo Account'
+  region: 'eastus'
+
+stages:
+- template: azure-release-pipelines-stage-template.yml
+  parameters:
+    stageName: 'CI'
+    environment: 'API'
+    azureSubscription: ${{ variables.azureSubscription }}
+    resourceGroupName: 'rutzsco-messaging-pattern'
+    region: ${{ variables.region }}
+    functionAppName: 'rutzsco-messaging-patterns-sb-processor'
+    functionAppStorageName: 'rutzscoazfsnpapi'
+    packageName: 'App.zip'
