@@ -8,10 +8,6 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-<<<<<<< HEAD
-=======
-  rootDirectory: 'Services/function-service-bus'
->>>>>>> d3d19cdf1ea3688fd20c0cdc10f078fe3cda7b1f
 
 variables:
   buildConfiguration: 'Release'
