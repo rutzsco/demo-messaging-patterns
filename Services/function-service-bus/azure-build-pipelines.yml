@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-  rootDirectory: 'Services/durable-function-async-api'
+  rootDirectory: 'Services/function-service-bus'
 
 variables:
   buildConfiguration: 'Release'
