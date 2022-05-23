@@ -8,7 +8,7 @@ param functionAppName string
 module function 'function.bicep' = {
   name: 'functionDeploy'
   params: {
-    function_app_name: functionAppStorageAccountName
-    storage_account_name: functionAppName
+    function_app_name: functionAppName
+    storage_account_name: functionAppStorageAccountName
   }
 }
