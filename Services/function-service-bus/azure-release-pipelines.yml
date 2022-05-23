@@ -16,8 +16,11 @@ stages:
     stageName: 'CI'
     environment: 'API'
     azureSubscription: ${{ variables.azureSubscription }}
-    resourceGroupName: 'rutzsco-messaging-pattern'
+    resourceGroupName: 'rutzsco-messaging-patterns'
     region: ${{ variables.region }}
     functionAppName: 'rutzsco-messaging-patterns-sb-processor'
     functionAppStorageName: 'rutzscoazfsnpapi'
-    packageName: 'App.zip'
+    packageName: 'Demo.MessageProcessor.zip'
+    templateFile: '$(Pipeline.Workspace)/build/Infrastructure/main.bicep'
+    webPubSubConnectionString: $(WebPubSubConnectionString)
+

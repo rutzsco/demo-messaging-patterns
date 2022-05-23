@@ -15,6 +15,10 @@ parameters:
   default: ''
 - name: packageName
   default: ''  
+- name: templateFile
+  default: ''
+- name: webPubSubConnectionString
+  default: ''  
 
 stages:
   - stage: ${{ parameters.stageName }}
@@ -34,9 +38,18 @@ stages:
             steps:
             - task: AzureCLI@2
               inputs:
-                azureSubscription: $(azureServiceConnection)
+                azureSubscription: ${{ parameters.azureSubscription }}
                 scriptType: bash
                 scriptLocation: inlineScript
                 inlineScript: |
-                az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.region }} 
-                az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file $(templateFile) --parameters functionAppName=$(functionAppName) functionAppStorageName=$(functionAppStorageName) > outputs.json
+                  az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.region }} 
+                  az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.templateFile }} --parameters functionAppName=${{ parameters.functionAppName }} functionAppStorageAccountName=${{ parameters.functionAppStorageName }} > outputs.json
+
+            - task: AzureFunctionApp@1
+              displayName: 'Azure functions app deploy'
+              inputs:
+                azureSubscription: ${{ parameters.azureSubscription }}
+                appType: functionApp
+                appName: ${{ parameters.functionAppName }}
+                package: '$(Pipeline.Workspace)/build/App/${{ parameters.packageName }}'
+                AppSettings: '-WebPubSubConnectionString ${{ parameters.webPubSubConnectionString }}'
