@@ -1,0 +1,22 @@
+@baseUrl = https://rutzsco-messaging-patterns-sb-processor.azurewebsites.net/api/
+### Publish Queue Message
+
+POST {{baseUrl}}/PublishQueueMessage
+content-type: application/json
+
+{
+    "DeviceId": "4d502dd6-d5e0-11ec-9d64-0242ac120002",
+    "Measurement": "Tempurature",
+    "MeasurementValue": "50"
+}
+
+### Publish Topic Message
+
+POST {{baseUrl}}/PublishTopicMessage
+content-type: application/json
+
+{
+    "DeviceId": "4d502dd6-d5e0-11ec-9d64-0242ac120002",
+    "Measurement": "Tempurature",
+    "MeasurementValue": "50"
+}

@@ -10,16 +10,15 @@ using Newtonsoft.Json;
 
 namespace Demo.MessageProcessor
 {
-    public static class PublishQueueMessage
+    public static class PublishTopicMessage
     {
-        [FunctionName("PublishQueueMessage")]
+        [FunctionName("PublishTopicMessage")]
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [ServiceBus("telemetry001", Connection = "ServiceBusConnectionString")] IAsyncCollector<dynamic> output,
+            [ServiceBus("telemetry002", Connection = "ServiceBusConnectionString")] IAsyncCollector<dynamic> output,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-  
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             await output.AddAsync(requestBody);
            
