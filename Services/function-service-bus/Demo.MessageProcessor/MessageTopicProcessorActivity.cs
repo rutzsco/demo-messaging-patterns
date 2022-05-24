@@ -8,7 +8,7 @@ namespace Demo.MessageProcessor
     public class MessageTopicProcessorActivity
     {
         [FunctionName("MessageTopicProcessorActivity")]
-        public void Run([ServiceBusTrigger("telemetry002", Connection = "ServiceBusConnectionString")]string myQueueItem, ILogger log)
+        public void Run([ServiceBusTrigger("telemetry002", "FunctionProcesssor", Connection = "ServiceBusConnectionString")]string myQueueItem, ILogger log)
         {
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
         }
