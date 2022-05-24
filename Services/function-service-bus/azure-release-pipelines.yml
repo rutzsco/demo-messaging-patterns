@@ -22,5 +22,5 @@ stages:
     functionAppStorageName: 'rutzscoazfsnpapi'
     packageName: 'Demo.MessageProcessor.zip'
     templateFile: '$(Pipeline.Workspace)/build/Infrastructure/main.bicep'
-    webPubSubConnectionString: $(WebPubSubConnectionString)
+    serviceBusConnectionString: $(ServiceBusConnectionString)
 

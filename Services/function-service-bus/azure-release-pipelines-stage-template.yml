@@ -17,7 +17,7 @@ parameters:
   default: ''  
 - name: templateFile
   default: ''
-- name: webPubSubConnectionString
+- name: serviceBusConnectionString
   default: ''  
 
 stages:
@@ -52,4 +52,4 @@ stages:
                 appType: functionApp
                 appName: ${{ parameters.functionAppName }}
                 package: '$(Pipeline.Workspace)/build/App/${{ parameters.packageName }}'
-                AppSettings: '-WebPubSubConnectionString ${{ parameters.webPubSubConnectionString }}'
+                AppSettings: '-ServiceBusConnectionString ${{ parameters.serviceBusConnectionString }}'
