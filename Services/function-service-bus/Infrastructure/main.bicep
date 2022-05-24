@@ -22,6 +22,7 @@ module function 'function.bicep' = {
     location: location
     function_app_name: functionAppName
     storage_account_name: functionAppStorageAccountName
+    serviceBusConnectionString: sb.outputs.connectionString
   }
 }
 

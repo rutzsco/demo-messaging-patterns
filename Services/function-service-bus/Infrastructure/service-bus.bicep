@@ -25,3 +25,4 @@ resource sb 'Microsoft.ServiceBus/namespaces@2021-01-01-preview' = {
 
 output name string = sb.name
 output id string = sb.id
+output connectionString string = sb.properties.serviceBusEndpoint

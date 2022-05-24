@@ -1,8 +1,11 @@
 param function_app_name string
 param storage_account_name string
 param location string = resourceGroup().location
+param serviceBusConnectionString string
+
 var app_insights_name = function_app_name
 var appservice_plan_name = function_app_name
+
 
 resource storage_account 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storage_account_name
@@ -66,6 +69,10 @@ resource function_app 'Microsoft.Web/sites@2020-12-01' = {
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
           value: '~14'
+        }
+        {
+          name: 'ServiceBusConnectionString'
+          value: serviceBusConnectionString
         }
       ]
     }
