@@ -2,7 +2,7 @@ param location string = 'eastus'
 
 param functionAppStorageAccountName string
 param functionAppName string
-param serviceBusName string = 'rutzsco-messaging-patterns'
+param serviceBusName string = 'rutzscomessagingpatterns'
 
 // Service Bus
 module sb 'service-bus.bicep' = {
@@ -10,8 +10,7 @@ module sb 'service-bus.bicep' = {
   
   params: {
     location: location
-    environmentName: serviceBusName
-    environmentSuffix: '-sb'
+    serviceBusName: serviceBusName
   }
 }
 
