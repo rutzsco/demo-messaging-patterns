@@ -1,11 +1,8 @@
 param location string = 'eastus'
 
-@description('The function application storage account name.')
 param functionAppStorageAccountName string
-
-@description('The environment prefix to append to resource names.')
 param functionAppName string
-
+param serviceBusName string = 'rutzsco-messaging-patterns'
 
 // Service Bus
 module sb 'service-bus.bicep' = {
@@ -13,7 +10,7 @@ module sb 'service-bus.bicep' = {
   
   params: {
     location: location
-    environmentName: functionAppName
+    environmentName: serviceBusName
     environmentSuffix: '-sb'
   }
 }
