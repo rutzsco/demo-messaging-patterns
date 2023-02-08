@@ -1,4 +1,5 @@
-@baseUrl = https://rutzsco-messaging-patterns-async-api.azurewebsites.net/api
+@baseUrl = http://localhost:7071/api
+
 ### Sent Aynsc Request
 # @name startWorkRequest
 

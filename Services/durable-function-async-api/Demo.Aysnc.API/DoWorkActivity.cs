@@ -18,16 +18,5 @@ namespace Demo.Aysnc.API
             Thread.Sleep(waitSeconds * 1000);
             return $"OK";
         }
-
-        [FunctionName("Workflow")]
-        public static async Task<List<string>> RunOrchestrator([OrchestrationTrigger] IDurableOrchestrationContext context)
-        {
-            var outputs = new List<string>();
-            var duration = context.GetInput<int>();
-            outputs.Add(await context.CallActivityAsync<string>("DoWorkActivity", duration / 3));
-            outputs.Add(await context.CallActivityAsync<string>("DoWorkActivity", duration / 3));
-            outputs.Add(await context.CallActivityAsync<string>("DoWorkActivity", duration / 3));
-            return outputs;
-        }
     }
 }
